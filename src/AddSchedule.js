@@ -4,8 +4,6 @@ function AddSchedule(props) {
 	const [time, setTime] = useState(undefined);
 	const [work, setWork] = useState(undefined);
 
-	const close = () => props.close();
-
 	function submit(e) {
 		e.preventDefault();
 
@@ -14,7 +12,7 @@ function AddSchedule(props) {
 			return false;
 		}
 
-		close();
+		props.close();
 	}
 
 	return (
@@ -23,7 +21,7 @@ function AddSchedule(props) {
 				<label><span>time</span> <input type="time" value={time} onChange={e => setTime(e.target.value)} /></label>
 				<label><span>work</span> <input type="text" value={work} onInput={e => setWork(e.target.value)} /></label>
 				<input type="submit" value="Add" />
-				<input type="button" value="Cancel" onClick={close} />
+				<input type="button" value="Cancel" onClick={props.close} />
 			</form>
 		</div>
 	);

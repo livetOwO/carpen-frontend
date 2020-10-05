@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import STR_DAY from './define';
 import AddSchedule from './AddSchedule';
 
