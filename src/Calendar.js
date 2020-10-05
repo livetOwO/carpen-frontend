@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import STR_DAY from './define';
 
 function Calendar() {
     const [date, setDate] = useState(new Date());
@@ -17,8 +18,7 @@ function Calendar() {
 
     return (
         <div className="Calendar">
-            {startDay}
-            {endDate}
+            
         </div>
     )
 }
