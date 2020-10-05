@@ -59,7 +59,7 @@ const Scheduler = forwardRef((props, ref) => {
 
         if (schedule.length === 0) {
             let tmp = JSON.parse(localStorage.getItem('schedule'));
-            if (tmp.length !== 0) {
+            if (tmp && tmp.length !== 0) {
                 setSchedule(tmp);
             }
         }
