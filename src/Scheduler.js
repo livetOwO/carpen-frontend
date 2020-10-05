@@ -4,15 +4,15 @@ import AddSchedule from './AddSchedule';
 
 function Scheduler(props) {
 	const selectedDate = props.selectedDate;
-    const [isShowForm, setShowForm] = useState(false);
+    const [isFormShow, setFormShow] = useState(false);
 
-    const handleClose = () => setShowForm(false);
+    const handleClose = () => setFormShow(false);
 
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-			{ isShowForm && <AddSchedule close={handleClose} />}
-            <button onClick={() => setShowForm(true)}>Add</button>
+			{ isFormShow && <AddSchedule close={handleClose} />}
+            <button onClick={() => setFormShow(true)}>Add</button>
             <button>Clear All</button>
         </div>
     )
