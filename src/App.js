@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
 import Calendar from './Calendar';
 import Scheduler from './Scheduler';
 import Modal from './Modal';
-
-var modalCallback = undefined;
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isModalShow, setModalShow] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [modalType, setModalType] = useState('normal');
+  const childRef = useRef();
 
   const handleSelect = date => setSelectedDate(date);
   const handleModalClose = () => setModalShow(false);
 
-  function handleModal(message, callback) {
+  function handleModal(message, isEdit) {
     setModalMessage(message);
-    modalCallback = callback;
-    if (callback !== undefined) {
+    if (isEdit) {
       setModalType('edit')
     } else {
       setModalType('normal');
@@ -30,21 +28,19 @@ function App() {
     console.log(time,work);
     
     if (!time || !work) {
-      modalCallback = undefined;
       handleModal('time 또는 work가 비어있습니다.');
       return false;
     }
     
     setModalShow(false);
-    modalCallback(modalMessage, time, work);
-    modalCallback = undefined;
+    childRef.current.edit(modalMessage, time, work);
   }
 
   return (
     <div className="App">
       <div className="space-between">
         <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
-        <Scheduler selectedDate={selectedDate} modal={handleModal} />
+        <Scheduler ref={childRef} selectedDate={selectedDate} modal={handleModal} />
       </div>
       {isModalShow && <Modal message={modalMessage} type={modalType} close={handleModalClose} callback={handleCallback} />}
     </div>

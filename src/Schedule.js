@@ -12,7 +12,7 @@ function Schedule(props) {
 				<span>{work}</span>
 			</div>
 			<div>
-				<button onClick={() => props.modal(props.idx, props.edit)}>수정</button>
+				<button onClick={() => props.modal(props.idx, true)}>수정</button>
 				<button onClick={deleteItem}>삭제</button>
 			</div>
 		</div>
