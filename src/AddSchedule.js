@@ -12,6 +12,7 @@ function AddSchedule(props) {
 			return false;
 		}
 
+		props.add(time, work);
 		props.close();
 	}
 

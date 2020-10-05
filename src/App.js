@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <Calendar onSelect={handleSelect} selectedDate={selectedDate} />
+      <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
       <Scheduler selectedDate={selectedDate} modal={handleModal} />
       {isModalShow && <Modal message={modalMessage} close={handleModalClose} />}
     </div>
