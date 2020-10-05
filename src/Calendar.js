@@ -10,9 +10,9 @@ function Calendar(props) {
     function selectDate(dateInst, date) {
         let result = new Date(dateInst.getTime());
         result.setDate(date);
-        if (props.onSelect) {
-            props.onSelect(result);
-        }
+
+        props.selectDate(result);
+
         return result;
     }
 
