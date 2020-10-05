@@ -18,7 +18,13 @@ function Calendar() {
 
     return (
         <div className="Calendar">
-            
+            <table>
+                <thead>
+                    <tr>
+                        {STR_DAY.map((day, i) => <th key={i}>{day}</th>)}
+                    </tr>
+                </thead>
+            </table>
         </div>
     )
 }
