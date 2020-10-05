@@ -11,7 +11,7 @@ function Scheduler(props) {
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-			{ isFormShow && <AddSchedule close={handleClose} />}
+			{ isFormShow && <AddSchedule close={handleClose} modal={props.modal} />}
             <button onClick={() => setFormShow(true)}>Add</button>
             <button>Clear All</button>
         </div>

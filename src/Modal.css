@@ -1,0 +1,36 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 10px 20px;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 15px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title button {
+    height: auto;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f05f53;
+    background: none;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
