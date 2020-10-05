@@ -7,6 +7,22 @@ function Calendar(props) {
     const [startDay, setStartDay] = useState(0);
     const [endDate, setEndDate] = useState(0);
 
+    function getMonthString(date) {
+        return new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+    }
+
+    function prevMonth(dateInst) {
+        let result = new Date(dateInst.getTime());
+        result.setMonth(result.getMonth() - 1, 1);
+        return result;
+    }
+
+    function nextMonth(dateInst) {
+        let result = new Date(dateInst.getTime());
+        result.setMonth(result.getMonth() + 1, 1);
+        return result;
+    }
+
     function selectDate(dateInst, date) {
         let result = new Date(dateInst.getTime());
         result.setDate(date);
@@ -28,6 +44,10 @@ function Calendar(props) {
 
     return (
         <div className="Calendar">
+            <h1>{date.getFullYear()}</h1>
+            <h1>{getMonthString(date)}</h1>
+            <button onClick={() => setDate(prevMonth(date))}>&lt;</button>
+            <button onClick={() => setDate(nextMonth(date))}>&gt;</button>
             <table>
                 <thead>
                     <tr>
