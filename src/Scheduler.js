@@ -2,11 +2,13 @@ import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'rea
 import STR_DAY from './define';
 import Schedule from './Schedule';
 import AddSchedule from './AddSchedule';
+import './Scheduler.css';
 
 const Scheduler = forwardRef((props, ref) => {
 	const selectedDate = props.selectedDate;
     const [isFormShow, setFormShow] = useState(false);
     const [schedule, setSchedule] = useState([]);
+    const [title, setTitle] = useState('');
 
     const dateToString = date => date.toISOString().substr(0, 10);
     const handleClose = () => setFormShow(false);
@@ -53,22 +55,30 @@ const Scheduler = forwardRef((props, ref) => {
     }));
 
     useEffect(() => {
+        setTitle(dateToString(selectedDate).replace('-', '.') + '.(' + STR_DAY[selectedDate.getDay()]+')');
+
         if (schedule.length === 0) {
             let tmp = JSON.parse(localStorage.getItem('schedule'));
             if (tmp.length !== 0) {
                 setSchedule(tmp);
             }
         }
-    }, [schedule]);
+    }, [selectedDate, schedule]);
 
     return (
         <div className="Scheduler">
-            {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-            {schedule.map((data, i) => dateToString(selectedDate) === data.date && 
-            <Schedule key={i} idx={i} data={data} delete={handleDelete} modal={props.modal} />)}
-			{isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
-            <button onClick={() => setFormShow(true)}>Add</button>
-            <button onClick={clearAll}>Clear All</button>
+            <div>
+                <h1>{STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}</h1>
+                <div className="schedule-list">
+                    {schedule.map((data, i) => dateToString(selectedDate) === data.date && 
+                    <Schedule key={i} idx={i} data={data} delete={handleDelete} modal={props.modal} />)}
+                </div>
+            </div>
+            <div>
+                <button onClick={() => setFormShow(true)}>Add</button>
+                <button onClick={clearAll}>Clear All</button>
+            </div>
+            {isFormShow && <AddSchedule title={title} add={handleAdd} close={handleClose} modal={props.modal} />}
         </div>
     )
 })

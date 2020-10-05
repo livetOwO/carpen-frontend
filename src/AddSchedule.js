@@ -18,11 +18,14 @@ function AddSchedule(props) {
 
 	return (
 		<div className="AddSchedule">
+			<h2>{props.title}</h2>
 			<form action="#AddSchedule" onSubmit={submit}>
-				<label><span>time</span> <input type="time" onChange={e => setTime(e.target.value)} /></label>
-				<label><span>work</span> <input type="text" onInput={e => setWork(e.target.value)} /></label>
-				<input type="submit" value="Add" />
-				<input type="button" value="Cancel" onClick={props.close} />
+				<label><h3>time</h3> <input type="time" onChange={e => setTime(e.target.value)} /></label>
+				<label><h3>work</h3> <input type="text" onInput={e => setWork(e.target.value)} /></label>
+				<div>
+					<input type="submit" value="Add" />
+					<input type="button" value="Cancel" onClick={props.close} />
+				</div>
 			</form>
 		</div>
 	);

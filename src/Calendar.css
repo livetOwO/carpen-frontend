@@ -1,0 +1,66 @@
+.Calendar {
+    padding: 10px 20px;
+    padding-bottom: 30px;
+    background: white;
+}
+
+.Calendar h1 {
+    font-weight: normal;
+}
+
+.Calendar .title-bottom {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Calendar .title-bottom h1 {
+    margin-top: -10px;
+    color: #f05f53;
+}
+
+.Calendar button {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 0;
+    background: #333;
+    cursor: pointer;
+    outline: none;
+}
+
+.Calendar button:hover {
+    background: #555;
+}
+
+.Calendar button:active:hover {
+    background: #000;
+}
+
+.Calendar table {
+    border-collapse: collapse;
+    border: 2px solid #333;
+}
+
+.Calendar thead tr {
+    background: lightgray;
+    border-bottom: 2px solid #333;
+}
+
+.Calendar th {
+    padding: 5px 0;
+}
+
+.Calendar td {
+    width: 50px;
+    height: 30px;
+    border: 1px solid #999;
+    vertical-align: top;
+    padding: 2px 5px;
+}
+
+.Calendar .selected {
+    background: #f09999
+}

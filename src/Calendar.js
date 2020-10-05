@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import STR_DAY from './define';
+import './Calendar.css'
 
 function Calendar(props) {
 	const selectedDate = props.selectedDate;
@@ -45,9 +46,13 @@ function Calendar(props) {
     return (
         <div className="Calendar">
             <h1>{date.getFullYear()}</h1>
-            <h1>{getMonthString(date)}</h1>
-            <button onClick={() => setDate(prevMonth(date))}>&lt;</button>
-            <button onClick={() => setDate(nextMonth(date))}>&gt;</button>
+            <div className="space-between title-bottom">
+                <h1>{getMonthString(date)}</h1>
+                <div>
+                    <button onClick={() => setDate(prevMonth(date))}>&lt;</button>
+                    <button onClick={() => setDate(nextMonth(date))}>&gt;</button>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>

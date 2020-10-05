@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="space-between">
+      <div>
         <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
         <Scheduler ref={childRef} selectedDate={selectedDate} modal={handleModal} />
       </div>

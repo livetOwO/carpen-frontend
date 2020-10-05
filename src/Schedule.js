@@ -6,7 +6,7 @@ function Schedule(props) {
 	const deleteItem = () => props.delete(props.idx);
 
 	return (
-		<div className="Schedule">
+		<div className="Schedule space-between">
 			<div>
 				<span>{time}</span>
 				<span>{work}</span>

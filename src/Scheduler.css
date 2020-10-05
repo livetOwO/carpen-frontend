@@ -1,0 +1,83 @@
+.Scheduler {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 20px;
+    padding-bottom: 30px;
+    color: white;
+    background: #f05f53;
+}
+
+.Scheduler > div > button {
+    width: 150px;
+    padding: 0 5px;
+    font-size: 1.5em;
+    color: #555;
+    border-radius: 10px;
+    border: 0;
+    border-bottom: 3px solid #777;
+    background: white;
+    cursor: pointer;
+}
+
+.Scheduler > div > button:hover {
+    background: lightsalmon;
+}
+
+.Scheduler > div > button:active:hover {
+    background: #ccc;
+}
+
+.Scheduler > div > button + button {
+    margin-left: 5px;
+}
+
+.schedule-list {
+    height: 250px;
+    overflow: auto;
+}
+
+.Schedule {
+    margin-bottom: 10px;
+    background: white;
+    color: #333;
+    padding: 5px 10px;
+}
+
+.Schedule span {
+    margin-right: 10px;
+}
+
+.AddSchedule {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 70px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.AddSchedule h2 {
+    text-align: center;
+}
+
+.AddSchedule label {
+    display: block;
+    margin-top: 10px;
+}
+
+.AddSchedule input[type="text"] {
+    width: 100%;
+}
+
+.AddSchedule div {
+    margin-top: 5px;
+    float: right;
+}
+
+.AddSchedule div input {
+    margin-left: 10px;
+}
