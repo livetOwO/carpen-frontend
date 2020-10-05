@@ -7,7 +7,7 @@ function Modal(props) {
             <div className="container" onClick={e => e.stopPropagation()}>
                 <div className="title">
                     <h2>알림</h2>
-                    <button>X</button>
+                    <button onClick={props.close}>X</button>
                 </div>
                 <p>{props.message}</p>
             </div>
