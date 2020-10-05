@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import STR_DAY from './define';
+import Schedule from './Schedule';
 import AddSchedule from './AddSchedule';
 
 function Scheduler(props) {
@@ -35,7 +36,8 @@ function Scheduler(props) {
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-			{ isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
+            {schedule.map(data => <Schedule data={data} />)}
+			{isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
             <button onClick={() => setFormShow(true)}>Add</button>
             <button>Clear All</button>
         </div>
