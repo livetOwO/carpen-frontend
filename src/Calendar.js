@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import STR_DAY from './define';
 
-function Calendar() {
+function Calendar(props) {
+	const selectedDate = props.selectedDate;
     const [date, setDate] = useState(new Date());
     const [startDay, setStartDay] = useState(0);
     const [endDate, setEndDate] = useState(0);
