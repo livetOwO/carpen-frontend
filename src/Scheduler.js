@@ -25,22 +25,35 @@ function Scheduler(props) {
         setSchedule(schedule);
     }
 
+    function handleDelete(targetIdx) {
+        schedule.splice(targetIdx, 1);
+        
+        localStorage.setItem('schedule', JSON.stringify(schedule));
+        setSchedule([...schedule]);
+    }
+
+    function clearAll() {
+        const newData = schedule.filter(data => dateToString(selectedDate) !== data.date);
+        localStorage.setItem('schedule', JSON.stringify(newData));
+        setSchedule(newData);
+    }
+
     useEffect(() => {
         if (schedule.length === 0) {
-            let tmp = localStorage.getItem('schedule');
-            if (tmp) {
-                setSchedule(JSON.parse(tmp));
+            let tmp = JSON.parse(localStorage.getItem('schedule'));
+            if (tmp.length !== 0) {
+                setSchedule(tmp);
             }
         }
-    });
+    }, [schedule]);
 
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-            {schedule.map((data,i) => dateToString(selectedDate) === data.date && <Schedule key={i} data={data} />)}
+            {schedule.map((data, i) => dateToString(selectedDate) === data.date && <Schedule key={i} idx={i} data={data} delete={handleDelete} />)}
 			{isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
             <button onClick={() => setFormShow(true)}>Add</button>
-            <button>Clear All</button>
+            <button onClick={clearAll}>Clear All</button>
         </div>
     )
 }

@@ -3,6 +3,8 @@ import React from 'react';
 function Schedule(props) {
 	const {time, work} = props.data;
 
+	const deleteItem = () => props.delete(props.idx);
+
 	return (
 		<div className="Schedule">
 			<div>
@@ -11,7 +13,7 @@ function Schedule(props) {
 			</div>
 			<div>
 				<button>수정</button>
-				<button>삭제</button>
+				<button onClick={deleteItem}>삭제</button>
 			</div>
 		</div>
 	);
