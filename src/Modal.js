@@ -5,7 +5,7 @@ function Modal(props) {
     return (
         <div className="Modal" onClick={props.close}>
             <div className="container" onClick={e => e.stopPropagation()}>
-                <div className="title">
+                <div className="title space-between">
                     <h2>알림</h2>
                     <button onClick={props.close}>X</button>
                 </div>

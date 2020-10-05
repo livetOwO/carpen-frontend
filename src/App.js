@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 import Calendar from './Calendar';
 import Scheduler from './Scheduler';
 import Modal from './Modal';
@@ -14,8 +15,10 @@ function App() {
 
   return (
     <div className="App">
-      <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
-      <Scheduler selectedDate={selectedDate} modal={handleModal} />
+      <div className="space-between">
+        <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
+        <Scheduler selectedDate={selectedDate} modal={handleModal} />
+      </div>
       {isModalShow && <Modal message={modalMessage} close={handleModalClose} />}
     </div>
   );
