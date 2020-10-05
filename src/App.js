@@ -9,7 +9,7 @@ function App() {
   const [modalMessage, setModalMessage] = useState('');
 
   const handleSelect = date => setSelectedDate(date);
-  const handleModal = message => setModalShow(true) && setModalMessage(message);
+  const handleModal = message => setModalShow(true) || setModalMessage(message);
   const handleModalClose = () => setModalShow(false);
 
   return (

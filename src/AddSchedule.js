@@ -9,6 +9,11 @@ function AddSchedule(props) {
 	function submit(e) {
 		e.preventDefault();
 
+		if (!time | !work) {
+			props.modal('time 또는 work가 비어있습니다.');
+			return false;
+		}
+
 		close();
 	}
 
