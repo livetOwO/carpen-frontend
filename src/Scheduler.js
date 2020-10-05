@@ -11,6 +11,18 @@ function Scheduler(props) {
     const dateToString = date => date.toISOString().substr(0, 10);
     const handleClose = () => setFormShow(false);
 
+    function handleEdit(idx, time, work) {
+        let data = {...schedule[idx]};
+
+        data.time = time;
+        data.work = work;
+
+        schedule.splice(idx, 1, data);
+
+        localStorage.setItem('schedule', JSON.stringify(schedule));
+        setSchedule([...schedule]);
+    }
+
     function handleAdd(time, work) {
         let data = {
             date: dateToString(selectedDate),
@@ -50,7 +62,8 @@ function Scheduler(props) {
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-            {schedule.map((data, i) => dateToString(selectedDate) === data.date && <Schedule key={i} idx={i} data={data} delete={handleDelete} />)}
+            {schedule.map((data, i) => dateToString(selectedDate) === data.date && 
+            <Schedule key={i} idx={i} data={data} edit={handleEdit} delete={handleDelete} modal={props.modal} />)}
 			{isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
             <button onClick={() => setFormShow(true)}>Add</button>
             <button onClick={clearAll}>Clear All</button>

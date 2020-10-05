@@ -4,14 +4,41 @@ import Calendar from './Calendar';
 import Scheduler from './Scheduler';
 import Modal from './Modal';
 
+var modalCallback = undefined;
+
 function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isModalShow, setModalShow] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [modalType, setModalType] = useState('normal');
 
   const handleSelect = date => setSelectedDate(date);
-  const handleModal = message => setModalShow(true) || setModalMessage(message);
   const handleModalClose = () => setModalShow(false);
+
+  function handleModal(message, callback) {
+    setModalMessage(message);
+    modalCallback = callback;
+    if (callback !== undefined) {
+      setModalType('edit')
+    } else {
+      setModalType('normal');
+    }
+    setModalShow(true);
+  }
+
+  function handleCallback(time, work) {
+    console.log(time,work);
+    
+    if (!time || !work) {
+      modalCallback = undefined;
+      handleModal('time 또는 work가 비어있습니다.');
+      return false;
+    }
+    
+    setModalShow(false);
+    modalCallback(modalMessage, time, work);
+    modalCallback = undefined;
+  }
 
   return (
     <div className="App">
@@ -19,7 +46,7 @@ function App() {
         <Calendar selectDate={handleSelect} selectedDate={selectedDate} />
         <Scheduler selectedDate={selectedDate} modal={handleModal} />
       </div>
-      {isModalShow && <Modal message={modalMessage} close={handleModalClose} />}
+      {isModalShow && <Modal message={modalMessage} type={modalType} close={handleModalClose} callback={handleCallback} />}
     </div>
   );
 }
