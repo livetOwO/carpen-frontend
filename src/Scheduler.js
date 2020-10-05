@@ -20,23 +20,24 @@ function Scheduler(props) {
 
         schedule.push(data);
 
-        localStorage.setItem(JSON.stringify(schedule));
+        localStorage.setItem('schedule', JSON.stringify(schedule));
 
         setSchedule(schedule);
     }
 
     useEffect(() => {
-        let tmp = localStorage.getItem('livet_scheduler');
-        
-        if (tmp) {
-            setSchedule(JSON.parse(tmp));
+        if (schedule.length === 0) {
+            let tmp = localStorage.getItem('schedule');
+            if (tmp) {
+                setSchedule(JSON.parse(tmp));
+            }
         }
-    }, [schedule]);
+    });
 
     return (
         <div className="Scheduler">
             {STR_DAY[selectedDate.getDay()] + ' ' + selectedDate.getDate()}
-            {schedule.map(data => <Schedule data={data} />)}
+            {schedule.map((data,i) => dateToString(selectedDate) === data.date && <Schedule key={i} data={data} />)}
 			{isFormShow && <AddSchedule add={handleAdd} close={handleClose} modal={props.modal} />}
             <button onClick={() => setFormShow(true)}>Add</button>
             <button>Clear All</button>
