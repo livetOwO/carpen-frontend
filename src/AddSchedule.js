@@ -19,8 +19,8 @@ function AddSchedule(props) {
 	return (
 		<div className="AddSchedule">
 			<form action="#AddSchedule" onSubmit={submit}>
-				<label><span>time</span> <input type="time" value={time} onChange={e => setTime(e.target.value)} /></label>
-				<label><span>work</span> <input type="text" value={work} onInput={e => setWork(e.target.value)} /></label>
+				<label><span>time</span> <input type="time" onChange={e => setTime(e.target.value)} /></label>
+				<label><span>work</span> <input type="text" onInput={e => setWork(e.target.value)} /></label>
 				<input type="submit" value="Add" />
 				<input type="button" value="Cancel" onClick={props.close} />
 			</form>
